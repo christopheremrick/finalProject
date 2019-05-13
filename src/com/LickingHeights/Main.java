@@ -23,6 +23,7 @@ public class Main {
             System.out.println("You have "+wins+" wins.");
             System.out.println("You have "+losses+" losses.");
             printLine();
+            checkWinOrLoss();
         }while(true);
     }
     private static int getRandomChoice() {
@@ -92,5 +93,18 @@ public class Main {
     }
     private static void printLine() {
         System.out.println("-----------------------------------------------------------------------------------------");
+    }
+    private static void checkWinOrLoss() {
+        if(wins == 10) {
+            System.out.println("You win the game.");
+            printLine();
+            System.exit(0);
+        }
+        else if(losses == 10) {
+            System.out.println("You lose the game.");
+            printLine();
+            System.exit(0);
+        }
+
     }
 }
