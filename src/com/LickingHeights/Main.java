@@ -5,6 +5,9 @@ public class Main {
     // Originally made this in another file
     // That's why the time stamps are so close together
 
+    public static int wins;
+    public static int losses;
+
     public static void main(String[] args) {
     }
     private static int getRandomChoice() {
@@ -26,6 +29,26 @@ public class Main {
         }
         else {
             return choices[3]; // scissors
+        }
+    }
+    private static void gameLogic(int userInput, int compInput) {
+        if((userInput==1&&compInput==1)||(userInput ==2&&compInput==2)||(userInput==3&&compInput==3)) {
+            System.out.println("Draw");
+            return;
+        }
+        else if((userInput==1&&compInput==3)||(userInput==2&&compInput==1)||(userInput==3&&compInput==2)) {
+            System.out.println("You win");
+            wins++;
+            return;
+        }
+        else if((userInput==1&&compInput==2)||(userInput==2&&compInput==3)||(userInput==3&&compInput==1)) {
+            System.out.println("You lose");
+            losses++;
+            return;
+        }
+        else {
+            System.out.println("Error");
+            return;
         }
     }
 }
