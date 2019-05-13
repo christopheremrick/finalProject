@@ -1,5 +1,7 @@
 package com.LickingHeights;
 
+import java.util.Scanner;
+
 public class Main {
 
     // Originally made this in another file
@@ -9,6 +11,16 @@ public class Main {
     public static int losses;
 
     public static void main(String[] args) {
+        do {
+            Scanner scan = new Scanner(System.in);
+            int compChoice = getRandomChoice();
+            System.out.println("Type 1 for rock, 2 for paper, 3 for scissors");
+            int choice = scan.nextInt();
+            printPlayerChoice(choice, compChoice);
+            gameLogic(choice, compChoice);
+            System.out.println("You have "+wins+" wins.");
+            System.out.println("You have "+losses+" losses.");
+        }while(true);
     }
     private static int getRandomChoice() {
         int [] choices = new int[4];
