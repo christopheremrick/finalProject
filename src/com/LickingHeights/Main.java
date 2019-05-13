@@ -51,4 +51,28 @@ public class Main {
             return;
         }
     }
+    private static void printPlayerChoice(int userInput, int compChoice) {
+        switch(userInput) {
+            case 1:
+                System.out.println("You choose rock");
+                break;
+            case 2:
+                System.out.println("You choose paper");
+                break;
+            case 3:
+                System.out.println("You choose scissors");
+                break;
+        }
+        switch(compChoice) {
+            case 1:
+                System.out.println("Computer chooses rock");
+                break;
+            case 2:
+                System.out.println("Computer chooses paper");
+                break;
+            case 3:
+                System.out.println("Computer chooses scissors");
+                break;
+        }
+    }
 }
