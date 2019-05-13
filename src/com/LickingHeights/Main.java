@@ -14,12 +14,15 @@ public class Main {
         do {
             Scanner scan = new Scanner(System.in);
             int compChoice = getRandomChoice();
-            System.out.println("Type 1 for rock, 2 for paper, 3 for scissors");
+            System.out.println("Welcome to rock, paper, scissors.");
+            System.out.println("Type 1 for rock, 2 for paper, 3 for scissors.");
             int choice = scan.nextInt();
             printPlayerChoice(choice, compChoice);
             gameLogic(choice, compChoice);
+            printLine();
             System.out.println("You have "+wins+" wins.");
             System.out.println("You have "+losses+" losses.");
+            printLine();
         }while(true);
     }
     private static int getRandomChoice() {
@@ -45,46 +48,49 @@ public class Main {
     }
     private static void gameLogic(int userInput, int compInput) {
         if((userInput==1&&compInput==1)||(userInput ==2&&compInput==2)||(userInput==3&&compInput==3)) {
-            System.out.println("Draw");
+            System.out.println("Draw game.");
             return;
         }
         else if((userInput==1&&compInput==3)||(userInput==2&&compInput==1)||(userInput==3&&compInput==2)) {
-            System.out.println("You win");
+            System.out.println("You win.");
             wins++;
             return;
         }
         else if((userInput==1&&compInput==2)||(userInput==2&&compInput==3)||(userInput==3&&compInput==1)) {
-            System.out.println("You lose");
+            System.out.println("You lose.");
             losses++;
             return;
         }
         else {
-            System.out.println("Error");
+            System.out.println("Error.");
             return;
         }
     }
     private static void printPlayerChoice(int userInput, int compChoice) {
         switch(userInput) {
             case 1:
-                System.out.println("You choose rock");
+                System.out.println("You choose rock.");
                 break;
             case 2:
-                System.out.println("You choose paper");
+                System.out.println("You choose paper.");
                 break;
             case 3:
-                System.out.println("You choose scissors");
+                System.out.println("You choose scissors.");
                 break;
         }
         switch(compChoice) {
             case 1:
-                System.out.println("Computer chooses rock");
+                System.out.println("Computer chooses rock.");
                 break;
             case 2:
-                System.out.println("Computer chooses paper");
+                System.out.println("Computer chooses paper.");
                 break;
             case 3:
-                System.out.println("Computer chooses scissors");
+                System.out.println("Computer chooses scissors.");
                 break;
         }
+    }
+    private static void printLine() {
+        System.out.println("-----------------------------------------------------------------------------------------");
     }
 }
