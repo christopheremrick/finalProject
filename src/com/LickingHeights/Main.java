@@ -116,11 +116,18 @@ public class Main {
 
     }
     private static void writeToFile() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Highscores.txt", true));
+        File file = new File("Highscores.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
         Scanner scan = new Scanner(System.in);
+
+        if(!file.exists()) {
+            file.createNewFile();
+        }
+        if(file.length()>0) {
+            writer.newLine();
+        }
         System.out.println("Please type your name.");
         String name = scan.nextLine();
-        writer.newLine();
         writer.write(name + ": " + wins + " wins, and " + losses+ " losses.");
         writer.close();
     }
