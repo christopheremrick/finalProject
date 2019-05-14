@@ -1,8 +1,6 @@
 package com.LickingHeights;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +12,6 @@ public class Main {
     public static int losses;
 
     public static void main(String[] args) {
-        final File parentDir = new File("Highscores.txt");
 
         do {
             Scanner scan = new Scanner(System.in);
@@ -104,14 +101,10 @@ public class Main {
             System.out.println("You win the game.");
             printLine();
             try {
-                PrintWriter writer = new PrintWriter("Highscores.txt");
-                Scanner scan = new Scanner(System.in);
-                System.out.println("Please type your name.");
-                String name = scan.nextLine();
-                writer.println(name + ": " + wins + " wins, and " + losses+ " losses.");
-                writer.close();
-            } catch (FileNotFoundException e) {
+                writeToFile();
+            } catch (IOException e) {
                 e.printStackTrace();
+                System.out.println("Error.");
             }
             System.exit(0);
         }
@@ -121,5 +114,14 @@ public class Main {
             System.exit(0);
         }
 
+    }
+    private static void writeToFile() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Highscores.txt", true));
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please type your name.");
+        String name = scan.nextLine();
+        writer.newLine();
+        writer.write(name + ": " + wins + " wins, and " + losses+ " losses.");
+        writer.close();
     }
 }
