@@ -101,7 +101,7 @@ public class Main {
             System.out.println("You win the game.");
             printLine();
             try {
-                writeToFile();
+                writeToFile(true);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Error.");
@@ -111,11 +111,16 @@ public class Main {
         else if(losses == 10) {
             System.out.println("You lose the game.");
             printLine();
-            System.exit(0);
+            try {
+                writeToFile(false);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error.");
+            }
         }
 
     }
-    private static void writeToFile() throws IOException {
+    private static void writeToFile(boolean win) throws IOException {
         File file = new File("Highscores.txt");
         BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
         Scanner scan = new Scanner(System.in);
@@ -128,7 +133,12 @@ public class Main {
         }
         System.out.println("Please type your name.");
         String name = scan.nextLine();
-        writer.write(name + ": " + wins + " wins, and " + losses+ " losses.");
+        if(win) {
+            writer.write(name + ": " + wins + " wins, and " + losses + " losses. WIN");
+        }
+        else {
+            writer.write(name + ": " + wins + " wins, and " + losses + " losses. LOSS");
+        }
         writer.close();
     }
 }
