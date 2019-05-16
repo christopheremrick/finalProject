@@ -52,21 +52,17 @@ public class Main {
     private static void gameLogic(int userInput, int compInput) {
         if((userInput==1&&compInput==1)||(userInput ==2&&compInput==2)||(userInput==3&&compInput==3)) {
             System.out.println("Draw game.");
-            return;
         }
         else if((userInput==1&&compInput==3)||(userInput==2&&compInput==1)||(userInput==3&&compInput==2)) {
             System.out.println("You win.");
             wins++;
-            return;
         }
         else if((userInput==1&&compInput==2)||(userInput==2&&compInput==3)||(userInput==3&&compInput==1)) {
             System.out.println("You lose.");
             losses++;
-            return;
         }
         else {
             System.out.println("Error.");
-            return;
         }
     }
     private static void printPlayerChoice(int userInput, int compChoice) {
@@ -140,5 +136,7 @@ public class Main {
             writer.write(name + ": " + wins + " wins, and " + losses + " losses. LOSS");
         }
         writer.close();
+        wins = 0;
+        losses = 0;
     }
 }
